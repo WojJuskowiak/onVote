@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {select, Store} from "@ngrx/store";
+import {Store} from "@ngrx/store";
 import {RootState} from "./store/root/root.state";
-import {selectCandidates} from "./store/candidates/candidates.selectors";
 import {addCandidateAction} from "./store/candidates/candidates.actions";
 import {addVoterAction} from "./store/voters/voters.actions";
 import {voteAction} from "./store/votes/votes.actions";

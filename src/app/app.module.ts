@@ -8,6 +8,7 @@ import {VotersEffects} from "./store/voters/voters.effects";
 import {CandidatesEffects} from "./store/candidates/candidates.effects";
 import {VotesEffects} from "./store/votes/votes.effects";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
     BrowserModule,
     StoreModule.forRoot({root: rootReducer}),
     EffectsModule.forRoot([VotersEffects, CandidatesEffects, VotesEffects]),
-    StoreDevtoolsModule.instrument()
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
   bootstrap: [AppComponent]
