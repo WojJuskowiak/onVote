@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {delay, map, Observable, of, tap} from "rxjs";
 import {Candidate} from "../../shared/models/candidate.model";
+import {Voter} from "../../shared/models/voter.model";
 
 @Injectable({providedIn: 'root'})
 export class CandidatesService {
@@ -10,10 +11,19 @@ export class CandidatesService {
     return of(JSON.parse(localStorage.getItem(CandidatesService.LOCAL_STORAGE_CANDIDATES_KEY) ?? '[]')).pipe(delay(1000));
   }
 
-  addCandidate(candidate: Candidate): Observable<void> {
+  addCandidate(name: string): Observable<Candidate> {
     return this.candidates$.pipe(
-      tap(candidates => this.updateCandidates([...candidates, candidate])),
-      map(() => void 0));
+      map(candidates => {
+        const id = this.getNextId(candidates);
+        const candidate = {id, name}
+        this.updateCandidates([...candidates, candidate]);
+        return candidate;
+      }));
+  }
+
+  private getNextId(candidates: Candidate[]): number {
+    const ids = candidates.map(candidate => candidate.id);
+    return ids.reduce((previous, current) => previous > current ? previous : current, -1) + 1;
   }
 
   private updateCandidates(candidates: Candidate[]) {

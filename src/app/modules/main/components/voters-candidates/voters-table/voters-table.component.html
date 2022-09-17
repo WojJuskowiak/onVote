@@ -1,0 +1,11 @@
+<onv-table-header-with-add [header]="'Voters'"></onv-table-header-with-add>
+<div class="onv-voters-table__table">
+  <div class="onv-voters-table__row">
+    <div class="onv-voters-table__cell onv-voters-table__cell_header">Name</div>
+    <div class="onv-voters-table__cell onv-voters-table__cell_header">Has voted</div>
+  </div>
+  <div *ngFor="let voter of voters" class="onv-voters-table__row">
+    <div class="onv-voters-table__cell">{{voter.name}}</div>
+    <div class="onv-voters-table__cell">{{voter.hasVoted}}</div>
+  </div>
+</div>

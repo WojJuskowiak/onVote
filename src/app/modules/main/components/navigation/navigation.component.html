@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a [routerLink]="getRouterLinkForRoutePath(RoutePath.MAIN)" class="navbar-brand">onVote</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a [routerLink]="getRouterLinkForRoutePath(RoutePath.VOTERS_CANDIDATES)" [class.active]="getIsLinkActive(RoutePath.VOTERS_CANDIDATES)" class="nav-link">Voters & Candidates</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="getRouterLinkForRoutePath(RoutePath.VOTE)" [class.active]="getIsLinkActive(RoutePath.VOTE)" class="nav-link">Vote</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

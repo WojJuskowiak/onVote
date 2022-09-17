@@ -1,0 +1,70 @@
+@mixin center-absolute() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.onv-table-header-with-add__container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 2px solid black;
+}
+
+.onv-table-header-with-add__text {
+  line-height: 32px;
+  font-weight: bold;
+}
+
+.onv-table-header-with-add__button-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+}
+
+.onv-table-header-with-add__button {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 0 1px black;
+  transition: background 300ms;
+
+  .onv-table-header-with-add__button_horizontal-line {
+    @include center-absolute();
+    position: absolute;
+    height: 3px;
+    width: 12px;
+    background-color: black;
+    transition: background 300ms;
+  }
+
+  .onv-table-header-with-add__button_vertical-line {
+    @include center-absolute();
+    position: absolute;
+    height: 12px;
+    width: 3px;
+    background-color: black;
+    transition: background 300ms;
+  }
+
+  &:hover {
+    background-color: black;
+
+    .onv-table-header-with-add__button_horizontal-line {
+      background-color: white;
+    }
+
+    .onv-table-header-with-add__button_vertical-line {
+      background-color: white;
+    }
+  }
+}

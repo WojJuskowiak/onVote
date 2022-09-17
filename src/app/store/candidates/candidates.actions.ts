@@ -10,7 +10,7 @@ export enum CandidatesActionType {
   GET_CANDIDATES_FAILURE = '[Candidates] Get Candidates Failure'
 }
 
-export const addCandidateAction = createAction(CandidatesActionType.ADD_CANDIDATE, props<{candidate: Candidate}>());
+export const addCandidateAction = createAction(CandidatesActionType.ADD_CANDIDATE, props<{name: string}>());
 
 export const addCandidateSuccessAction = createAction(CandidatesActionType.ADD_CANDIDATE_SUCCESS, props<{candidate: Candidate}>());
 

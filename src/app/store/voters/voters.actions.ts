@@ -10,7 +10,7 @@ export enum VotersActionType {
   GET_VOTERS_FAILURE = '[Voters] Get Voters Failure'
 }
 
-export const addVoterAction = createAction(VotersActionType.ADD_VOTER, props<{voter: Voter}>());
+export const addVoterAction = createAction(VotersActionType.ADD_VOTER, props<{name: string}>());
 
 export const addVoterSuccessAction = createAction(VotersActionType.ADD_VOTER_SUCCESS, props<{voter: Voter}>());
 

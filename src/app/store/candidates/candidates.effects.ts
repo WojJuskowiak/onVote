@@ -21,7 +21,7 @@ export class CandidatesEffects {
   addCandidate$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CandidatesAction.addCandidateAction),
-      switchMap(({candidate}) => this.candidatesService.addCandidate(candidate).pipe(map(() => candidate))),
+      switchMap(({name}) => this.candidatesService.addCandidate(name)),
       map(candidate => CandidatesAction.addCandidateSuccessAction({candidate})),
       catchError(error => {
         console.error(error.message);

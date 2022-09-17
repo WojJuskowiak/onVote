@@ -9,16 +9,32 @@ import {CandidatesEffects} from "./store/candidates/candidates.effects";
 import {VotesEffects} from "./store/votes/votes.effects";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {environment} from "../environments/environment";
+import {NavigationComponent} from './modules/main/components/navigation/navigation.component';
+import {RouterOutlet} from "@angular/router";
+import {VotersCandidatesComponent} from './modules/main/components/voters-candidates/voters-candidates.component';
+import {VoteComponent} from './modules/main/components/vote/vote.component';
+import {AppRoutingModule} from "./app-routing.module";
+import { VotersTableComponent } from './modules/main/components/voters-candidates/voters-table/voters-table.component';
+import { CandidatesTableComponent } from './modules/main/components/voters-candidates/candidates-table/candidates-table.component';
+import { TableHeaderWithAddComponent } from './modules/shared/components/table-header-with-add/table-header-with-add.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavigationComponent,
+    VotersCandidatesComponent,
+    VoteComponent,
+    VotersTableComponent,
+    CandidatesTableComponent,
+    TableHeaderWithAddComponent,
   ],
   imports: [
     BrowserModule,
     StoreModule.forRoot({root: rootReducer}),
     EffectsModule.forRoot([VotersEffects, CandidatesEffects, VotesEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    RouterOutlet,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
