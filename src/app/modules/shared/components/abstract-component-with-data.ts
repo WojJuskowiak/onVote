@@ -47,7 +47,7 @@ export abstract class AbstractComponentWithData implements OnInit, OnDestroy {
     this.initStoreData();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => {
       subscription.unsubscribe();
     })
@@ -92,7 +92,7 @@ export abstract class AbstractComponentWithData implements OnInit, OnDestroy {
     this.subscribeToData(this.store.pipe(select(selectVotesInProgress)), StoreDataPropertyName.VOTES_IN_PROGRESS);
   }
 
-  private subscribeToData(observable: Observable<StoreDataType>, dataName: StoreDataPropertyName) {
+  private subscribeToData(observable: Observable<StoreDataType>, dataName: StoreDataPropertyName): void {
     const subscription = observable.subscribe(observableData => {
       this.setProperProperty(dataName, observableData);
       this.changeDetectorRef.markForCheck();
@@ -100,7 +100,7 @@ export abstract class AbstractComponentWithData implements OnInit, OnDestroy {
     this.subscriptions.push(subscription);
   }
 
-  private setProperProperty(dataName: StoreDataPropertyName, observableData: StoreDataType) {
+  private setProperProperty(dataName: StoreDataPropertyName, observableData: StoreDataType): void {
     switch (dataName) {
       case StoreDataPropertyName.VOTERS:
         this.voters = observableData as Voter[];

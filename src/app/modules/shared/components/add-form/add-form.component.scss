@@ -1,0 +1,65 @@
+.onv-add-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-width: 400px;
+  height: 100%;
+  min-height: 198px;
+  padding: 32px;
+  border: 2px solid black;
+  background: white;
+  z-index: 10;
+}
+
+.onv-add-form__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.onv-add-form__form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.onv-add-form__label_invalid {
+  color: red;
+}
+
+.onv-add-form__input {
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 0 2px black;
+
+  &.ng-touched, &.ng-dirty {
+
+    &.ng-invalid {
+      box-shadow: 0 0 0 2px red;
+
+      &::placeholder {
+        color: red;
+      }
+    }
+
+    &.ng-valid {
+      box-shadow: 0 0 0 2px green;
+    }
+  }
+}
+
+.onv-add-form__validation-error {
+  color: red;
+  font-size: 12px;
+}

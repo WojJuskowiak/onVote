@@ -1,1 +1,35 @@
-<onv-table-header-with-add [header]="'Candidates'"></onv-table-header-with-add>
+<div class="onv-candidates-table__container">
+  <ng-container [ngSwitch]="candidatesInProgress || votesInProgress">
+    <ng-container *ngSwitchCase="true">
+      <ng-container *ngTemplateOutlet="loading"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <ng-container *ngTemplateOutlet="candidatesTable"></ng-container>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #candidatesTable>
+  <onv-table-header-with-add [header]="'Candidates'" (toggleAdd)="toggleAddForm($event)"></onv-table-header-with-add>
+  <div *ngIf="candidates.length > 0" class="onv-table__table">
+    <div class="onv-table__row">
+      <div class="onv-table__cell onv-table__cell_header">Name</div>
+      <div class="onv-table__cell onv-table__cell_header">Votes</div>
+    </div>
+    <div class="onv-table__rows-container">
+      <div *ngFor="let candidate of candidates" class="onv-table__row">
+        <div class="onv-table__cell">{{candidate.name }}</div>
+        <div class="onv-table__cell">{{ getNumberOfVotesForCandidate(candidate) }}</div>
+      </div>
+    </div>
+  </div>
+  <onv-add-form *ngIf="isAddFormOpen" [isOpen]="isAddFormOpen" [title]="'Add candidate'"
+                (addWithName)="addCandidate($event)"></onv-add-form>
+</ng-template>
+
+<ng-template #loading>
+  <div class="onv-candidates-table__spinner">
+    <div class="spinner-border" role="status"></div>
+    <div>Loading...</div>
+  </div>
+</ng-template>

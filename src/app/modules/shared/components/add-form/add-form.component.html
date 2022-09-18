@@ -1,0 +1,11 @@
+<h1>
+  {{title}}
+</h1>
+<form class="onv-add-form__form">
+  <div class="onv-add-form__form-container">
+    <input class="onv-add-form__input" placeholder="Name" [formControl]="nameControl">
+    <div class="onv-add-form__validation-error" *ngIf="isRequiredError">Name cannot be empty.</div>
+    <div class="onv-add-form__validation-error" *ngIf="isPatternError">Name is invalid.</div>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="onAdd()" [disabled]="form.invalid">Add</button>
+</form>

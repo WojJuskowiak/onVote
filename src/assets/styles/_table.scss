@@ -1,0 +1,64 @@
+.onv-table__table {
+  width: 100%;
+  min-width: 400px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.onv-table__rows-container {
+  max-height: 270px;
+  overflow-y: overlay;
+  border-bottom: 2px solid black;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+.onv-table__row {
+  display: flex;
+  justify-content: stretch;
+  width: 100%;
+
+  &:last-child {
+    .onv-table__cell {
+      border-bottom: none;
+    }
+  }
+}
+
+.onv-table__cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-bottom: 2px solid black;
+  padding: 16px 32px;
+  font-size: 14px;
+  line-height: 20px;
+  word-break: break-word;
+
+  &.onv-table__cell_header {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &:first-child {
+    border-right: 2px solid black;
+  }
+}

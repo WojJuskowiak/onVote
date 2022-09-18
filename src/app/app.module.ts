@@ -17,6 +17,9 @@ import {AppRoutingModule} from "./app-routing.module";
 import { VotersTableComponent } from './modules/main/components/voters-candidates/voters-table/voters-table.component';
 import { CandidatesTableComponent } from './modules/main/components/voters-candidates/candidates-table/candidates-table.component';
 import { TableHeaderWithAddComponent } from './modules/shared/components/table-header-with-add/table-header-with-add.component';
+import { AddFormComponent } from './modules/shared/components/add-form/add-form.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import { TableHeaderWithAddComponent } from './modules/shared/components/table-h
     VotersTableComponent,
     CandidatesTableComponent,
     TableHeaderWithAddComponent,
+    AddFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import { TableHeaderWithAddComponent } from './modules/shared/components/table-h
     EffectsModule.forRoot([VotersEffects, CandidatesEffects, VotesEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     RouterOutlet,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

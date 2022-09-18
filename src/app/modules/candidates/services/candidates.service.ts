@@ -26,7 +26,7 @@ export class CandidatesService {
     return ids.reduce((previous, current) => previous > current ? previous : current, -1) + 1;
   }
 
-  private updateCandidates(candidates: Candidate[]) {
+  private updateCandidates(candidates: Candidate[]): void {
     localStorage.setItem(CandidatesService.LOCAL_STORAGE_CANDIDATES_KEY, JSON.stringify(candidates));
   }
 }

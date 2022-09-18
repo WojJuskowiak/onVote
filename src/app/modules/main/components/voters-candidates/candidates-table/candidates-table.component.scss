@@ -1,0 +1,12 @@
+.onv-candidates-table__container {
+  position: relative;
+}
+
+.onv-candidates-table__spinner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

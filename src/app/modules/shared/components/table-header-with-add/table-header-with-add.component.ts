@@ -9,9 +9,12 @@ import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angula
 export class TableHeaderWithAddComponent {
   @Input() header = '';
 
-  @Output() addClicked = new EventEmitter<void>;
+  @Output() toggleAdd = new EventEmitter<boolean>;
 
-  onAdd() {
-    this.addClicked.emit();
+  isOpen = false;
+
+  toggleOpen(): void {
+    this.isOpen = !this.isOpen;
+    this.toggleAdd.emit(this.isOpen);
   }
 }

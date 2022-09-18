@@ -2,11 +2,18 @@
   <h1>Voting App</h1>
   <div class="onv-voters-candidates__tables-container">
     <div class="row">
-      <div class="col-md-6">
-        <onv-voters-table [voters]="voters"></onv-voters-table>
+      <div class="col-lg-6">
+        <div class="onv-voters-candidates__table-container">
+          <onv-voters-table [voters]="voters" [votersInProgress]="votersInProgress"></onv-voters-table>
+        </div>
       </div>
-      <div class="col-md-6">
-        <onv-candidates-table></onv-candidates-table>
+      <div class="col-lg-6">
+        <div class="onv-voters-candidates__table-container">
+          <onv-candidates-table [candidates]="candidates"
+                                [candidatesInProgress]="candidatesInProgress"
+                                [votes]="votes"
+                                [votesInProgress]="votesInProgress"></onv-candidates-table>
+        </div>
       </div>
     </div>
   </div>

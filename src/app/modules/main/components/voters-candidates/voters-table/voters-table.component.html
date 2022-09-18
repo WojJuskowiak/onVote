@@ -1,11 +1,38 @@
-<onv-table-header-with-add [header]="'Voters'"></onv-table-header-with-add>
-<div class="onv-voters-table__table">
-  <div class="onv-voters-table__row">
-    <div class="onv-voters-table__cell onv-voters-table__cell_header">Name</div>
-    <div class="onv-voters-table__cell onv-voters-table__cell_header">Has voted</div>
-  </div>
-  <div *ngFor="let voter of voters" class="onv-voters-table__row">
-    <div class="onv-voters-table__cell">{{voter.name}}</div>
-    <div class="onv-voters-table__cell">{{voter.hasVoted}}</div>
-  </div>
+<div class="onv-voters-table__container">
+  <ng-container [ngSwitch]="votersInProgress">
+    <ng-container *ngSwitchCase="true">
+      <ng-container *ngTemplateOutlet="loading"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <ng-container *ngTemplateOutlet="votersTable"></ng-container>
+    </ng-container>
+  </ng-container>
 </div>
+
+<ng-template #votersTable>
+  <onv-table-header-with-add [header]="'Voters'" (toggleAdd)="toggleAddForm($event)"></onv-table-header-with-add>
+  <div *ngIf="voters.length > 0" class="onv-table__table">
+      <div class="onv-table__row">
+        <div class="onv-table__cell onv-table__cell_header">Name</div>
+        <div class="onv-table__cell onv-table__cell_header">Has voted</div>
+      </div>
+      <div class="onv-table__rows-container">
+        <div *ngFor="let voter of voters" class="onv-table__row">
+          <div class="onv-table__cell">{{voter.name}}</div>
+          <ng-container [ngSwitch]="voter.hasVoted">
+            <div class="onv-table__cell onv-voters-table__checkmark" *ngSwitchCase="true"> ✓</div>
+            <div class="onv-table__cell onv-voters-table__x" *ngSwitchDefault> X</div>
+          </ng-container>
+        </div>
+      </div>
+
+  </div>
+  <onv-add-form *ngIf="isAddFormOpen" [isOpen]="isAddFormOpen" [title]="'Add voter'" (addWithName)="addVoter($event)"></onv-add-form>
+</ng-template>
+
+<ng-template #loading>
+  <div class="onv-voters-table__spinner">
+    <div class="spinner-border" role="status"></div>
+    <div>Loading...</div>
+  </div>
+</ng-template>
