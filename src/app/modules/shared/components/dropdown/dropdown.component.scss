@@ -1,0 +1,25 @@
+.onv-dropdown {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 38px;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px black;
+  cursor: pointer;
+}
+
+.onv-dropdown__list {
+  position: absolute;
+  top: 39px;
+  left: 0;
+  max-height: 114px;
+  overflow-y: auto;
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px black;
+  background: white;
+  z-index: 5;
+}

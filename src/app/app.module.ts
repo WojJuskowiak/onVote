@@ -20,6 +20,9 @@ import { TableHeaderWithAddComponent } from './modules/shared/components/table-h
 import { AddFormComponent } from './modules/shared/components/add-form/add-form.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ReactiveFormsModule} from "@angular/forms";
+import { DropdownComponent } from './modules/shared/components/dropdown/dropdown.component';
+import { DropdownRowComponent } from './modules/shared/components/dropdown/dropdown-row/dropdown-row.component';
+import { LoadingSpinnerComponent } from './modules/shared/components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     CandidatesTableComponent,
     TableHeaderWithAddComponent,
     AddFormComponent,
+    DropdownComponent,
+    DropdownRowComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+<div>
+  <ng-container [ngSwitch]="isEmpty">
+    <ng-container *ngSwitchCase="false">
+      {{ valueTransform(selectedValue) }}
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      {{ placeholder }}
+    </ng-container>
+  </ng-container>
+</div>
+<div>
+</div>
+<div *ngIf="isFocused && isOpen" class="onv-dropdown__list">
+  <onv-dropdown-row *ngFor="let value of data" [value]="value" [valueTransform]="valueTransform" (valueSelected)="valueSelected($event)"></onv-dropdown-row>
+</div>

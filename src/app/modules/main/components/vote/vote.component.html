@@ -1,3 +1,27 @@
 <div class="onv-container">
   <h1>Vote</h1>
+  <ng-container [ngSwitch]="isDataLoading">
+    <ng-container *ngSwitchCase="false" [ngTemplateOutlet]="voting"></ng-container>
+    <ng-container *ngSwitchDefault [ngTemplateOutlet]="loading"></ng-container>
+  </ng-container>
 </div>
+
+<ng-template #voting>
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-sm-5">
+        <onv-dropdown [data]="filteredVoters" [valueTransform]="nameTransform" [placeholder]="'I am'" [formControl]="voterControl"></onv-dropdown>
+      </div>
+      <div class="col-sm-5">
+        <onv-dropdown [data]="candidates" [valueTransform]="nameTransform" [placeholder]="'I vote for'" [formControl]="candidateControl"></onv-dropdown>
+      </div>
+      <div class="col-sm-2">
+        <button type="submit" [disabled]="form.invalid" class="btn btn-primary onv-vote__button" (click)="vote()">Vote</button>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #loading>
+  <onv-loading-spinner></onv-loading-spinner>
+</ng-template>
