@@ -14,15 +14,13 @@ import {RouterOutlet} from "@angular/router";
 import {VotersCandidatesComponent} from './modules/main/components/voters-candidates/voters-candidates.component';
 import {VoteComponent} from './modules/main/components/vote/vote.component';
 import {AppRoutingModule} from "./app-routing.module";
-import { VotersTableComponent } from './modules/main/components/voters-candidates/voters-table/voters-table.component';
-import { CandidatesTableComponent } from './modules/main/components/voters-candidates/candidates-table/candidates-table.component';
-import { TableHeaderWithAddComponent } from './modules/shared/components/table-header-with-add/table-header-with-add.component';
-import { AddFormComponent } from './modules/shared/components/add-form/add-form.component';
+import {VotersTableComponent} from './modules/main/components/voters-candidates/voters-table/voters-table.component';
+import {
+  CandidatesTableComponent
+} from './modules/main/components/voters-candidates/candidates-table/candidates-table.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ReactiveFormsModule} from "@angular/forms";
-import { DropdownComponent } from './modules/shared/components/dropdown/dropdown.component';
-import { DropdownRowComponent } from './modules/shared/components/dropdown/dropdown-row/dropdown-row.component';
-import { LoadingSpinnerComponent } from './modules/shared/components/loading-spinner/loading-spinner.component';
+import {SharedModule} from "./modules/shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -32,11 +30,6 @@ import { LoadingSpinnerComponent } from './modules/shared/components/loading-spi
     VoteComponent,
     VotersTableComponent,
     CandidatesTableComponent,
-    TableHeaderWithAddComponent,
-    AddFormComponent,
-    DropdownComponent,
-    DropdownRowComponent,
-    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +39,8 @@ import { LoadingSpinnerComponent } from './modules/shared/components/loading-spi
     RouterOutlet,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

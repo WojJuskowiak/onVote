@@ -1,6 +1,8 @@
+@use './size-variables';
+
 .onv-table__table {
   width: 100%;
-  min-width: 400px;
+  min-width: size-variables.$min-width;
   border-left: 2px solid black;
   border-right: 2px solid black;
 }

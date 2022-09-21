@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {RoutePath} from "../../../../app-routing.module";
 
@@ -18,7 +18,8 @@ export class NavigationComponent {
     return this.currentRouterPath === '/' + route;
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
   getRouterLinkForRoutePath(routePath: RoutePath): string {
     return '/' + routePath;

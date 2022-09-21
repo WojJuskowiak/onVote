@@ -1,4 +1,4 @@
-import {Component, forwardRef, HostBinding, HostListener, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, forwardRef, HostBinding, HostListener, Input, ViewEncapsulation} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {Nullable} from "../../utils/models/nullable.type";
 import {isNull} from "../../utils/functions/is-null";
@@ -20,15 +20,19 @@ export class DropdownComponent<T> implements ControlValueAccessor {
 
   @HostBinding('tabindex') tabIndex = 1;
 
+  @Input()
+  @HostBinding('class.disabled')
+  disabled = false;
+
   @HostListener('focus') onFocus(): void {
-    if (this.isDisabled) {
+    if (this.disabled) {
       return;
     }
     this.isFocused = true;
   }
 
   @HostListener('blur') onBlur(): void {
-    if (this.isDisabled) {
+    if (this.disabled) {
       return;
     }
     this.isFocused = false;
@@ -36,7 +40,7 @@ export class DropdownComponent<T> implements ControlValueAccessor {
   }
 
   @HostListener('click') onClick(): void {
-    if (this.isDisabled) {
+    if (this.disabled) {
       return;
     }
     this.isOpen = !this.isOpen;
@@ -59,14 +63,16 @@ export class DropdownComponent<T> implements ControlValueAccessor {
 
   selectedValue: Nullable<T> = null;
 
-  isDisabled = false;
-
   isFocused = false;
 
   isOpen = false;
 
-  get isEmpty() {
+  get isEmpty(): boolean {
     return this.selectedValue === null;
+  }
+
+  get isListVisible(): boolean {
+    return this.isFocused && this.isOpen;
   }
 
   registerOnChange(fn: (value: Nullable<T>) => void): void {
@@ -77,12 +83,7 @@ export class DropdownComponent<T> implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
-  }
-
   writeValue(value: Nullable<T>): void {
-    console.log(value);
     this.selectedValue = value;
   }
 

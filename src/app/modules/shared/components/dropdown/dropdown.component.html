@@ -10,6 +10,7 @@
 </div>
 <div>
 </div>
-<div *ngIf="isFocused && isOpen" class="onv-dropdown__list">
-  <onv-dropdown-row *ngFor="let value of data" [value]="value" [valueTransform]="valueTransform" (valueSelected)="valueSelected($event)"></onv-dropdown-row>
+<div *ngIf="isListVisible" class="onv-dropdown__list">
+  <onv-dropdown-row *ngFor="let value of data" [value]="value" [valueTransform]="valueTransform"
+                    (valueSelected)="valueSelected($event)"></onv-dropdown-row>
 </div>

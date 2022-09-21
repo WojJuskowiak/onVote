@@ -1,3 +1,5 @@
+@use '../../../../../assets/styles';
+
 @mixin center-absolute() {
   top: 50%;
   left: 50%;
@@ -10,7 +12,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-width: 400px;
+  min-width: styles.$min-width;
   border: 2px solid black;
 }
 

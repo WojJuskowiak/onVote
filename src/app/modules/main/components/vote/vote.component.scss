@@ -1,3 +1,5 @@
+@use '../../../../../assets/styles';
+
 .onv-vote__select {
   width: 100%;
   height: 38px;
@@ -5,4 +7,17 @@
 
 .onv-vote__button {
   width: 100%;
+}
+
+.onv-vote__row-container {
+  margin-top: 16px;
+
+  @media(max-width: styles.$breakpoint-sm) {
+    min-width: styles.$min-width;
+  }
+}
+
+.onv-vote__vote-disabled-reason {
+  margin-top: 16px;
+  color: red;
 }

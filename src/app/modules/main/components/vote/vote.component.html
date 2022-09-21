@@ -9,15 +9,24 @@
 <ng-template #voting>
   <form [formGroup]="form">
     <div class="row">
-      <div class="col-sm-5">
-        <onv-dropdown [data]="filteredVoters" [valueTransform]="nameTransform" [placeholder]="'I am'" [formControl]="voterControl"></onv-dropdown>
+      <div class="col-sm-5 onv-vote__row-container">
+        <onv-dropdown [data]="filteredVoters" [disabled]="!canVoterBeSelected" [valueTransform]="nameTransform"
+                      [placeholder]="'I am'" [formControl]="voterControl"></onv-dropdown>
       </div>
-      <div class="col-sm-5">
-        <onv-dropdown [data]="candidates" [valueTransform]="nameTransform" [placeholder]="'I vote for'" [formControl]="candidateControl"></onv-dropdown>
+      <div class="col-sm-5 onv-vote__row-container">
+        <onv-dropdown [data]="candidates" [disabled]="!canCandidateBeSelected" [valueTransform]="nameTransform"
+                      [placeholder]="'I vote for'" [formControl]="candidateControl"></onv-dropdown>
       </div>
-      <div class="col-sm-2">
-        <button type="submit" [disabled]="form.invalid" class="btn btn-primary onv-vote__button" (click)="vote()">Vote</button>
+      <div class="col-sm-2 onv-vote__row-container">
+        <button type="submit" [disabled]="form.invalid" class="btn btn-primary onv-vote__button" (click)="vote()">Vote
+        </button>
       </div>
+    </div>
+    <div class="onv-vote__vote-disabled-reason" *ngIf="!canVote">
+      <h1>You cannot vote, because:</h1>
+      <h2 *ngIf="!canCandidateBeSelected">There are no candidates.</h2>
+      <h2 *ngIf="isVotersListEmpty">There are no voters.</h2>
+      <h2 *ngIf="allVotersHaveVoted">All voters have already voted.</h2>
     </div>
   </form>
 </ng-template>

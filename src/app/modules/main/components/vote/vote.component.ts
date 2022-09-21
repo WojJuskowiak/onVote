@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {AbstractComponentWithData} from "../../../shared/components/abstract-component-with-data";
 import {RootState} from "../../../../store/root/root.state";
 import {Store} from "@ngrx/store";
@@ -57,15 +57,35 @@ export class VoteComponent extends AbstractComponentWithData {
     return this.voters.filter(voter => !voter.hasVoted);
   }
 
+  get isVotersListEmpty(): boolean {
+    return this.voters.length < 1;
+  }
+
+  get allVotersHaveVoted(): boolean {
+    return this.voters.length > 0 && this.filteredVoters.length < 1;
+  }
+
+  get canVoterBeSelected(): boolean {
+    return !this.isVotersListEmpty && !this.allVotersHaveVoted;
+  }
+
+  get canCandidateBeSelected(): boolean {
+    return this.candidates.length > 0;
+  }
+
+  get canVote(): boolean {
+    return this.canVoterBeSelected && this.canCandidateBeSelected;
+  }
+
   nameTransform = (person: Nullable<Voter | Candidate>) => {
-    if(isNull(person)) {
+    if (isNull(person)) {
       return '';
     }
     return person.name;
   }
 
   vote(): void {
-    const { candidateId, voterId } = this;
+    const {candidateId, voterId} = this;
     this.store.dispatch(voteAction({vote: {candidateId, voterId}}));
     this.form.reset();
   }

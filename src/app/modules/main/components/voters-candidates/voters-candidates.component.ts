@@ -8,7 +8,7 @@ import {AbstractComponentWithData} from "../../../shared/components/abstract-com
   templateUrl: './voters-candidates.component.html',
   styleUrls: ['./voters-candidates.component.scss']
 })
-export class VotersCandidatesComponent extends AbstractComponentWithData implements OnInit{
+export class VotersCandidatesComponent extends AbstractComponentWithData implements OnInit {
 
   constructor(store: Store<RootState>, changeDetectorRef: ChangeDetectorRef) {
     super(store, changeDetectorRef);

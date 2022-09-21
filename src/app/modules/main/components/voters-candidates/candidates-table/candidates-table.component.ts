@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {addCandidateAction} from "../../../../../store/candidates/candidates.actions";
 import {Candidate} from "../../../../shared/models/candidate.model";
 import {Store} from "@ngrx/store";

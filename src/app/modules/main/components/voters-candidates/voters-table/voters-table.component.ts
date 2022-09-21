@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Voter} from "../../../../shared/models/voter.model";
 import {RootState} from "../../../../../store/root/root.state";
 import {Store} from "@ngrx/store";

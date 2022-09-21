@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
-import {delay, map, Observable, of, tap} from "rxjs";
+import {delay, map, Observable, of} from "rxjs";
 import {Candidate} from "../../shared/models/candidate.model";
-import {Voter} from "../../shared/models/voter.model";
 
 @Injectable({providedIn: 'root'})
 export class CandidatesService {

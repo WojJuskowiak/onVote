@@ -9,6 +9,12 @@
   border-radius: 3px;
   box-shadow: 0 0 0 1px black;
   cursor: pointer;
+
+  &.disabled {
+    background: #f1f1f1;
+    color: #555555;
+    cursor: not-allowed;
+  }
 }
 
 .onv-dropdown__list {
@@ -16,10 +22,10 @@
   top: 39px;
   left: 0;
   max-height: 114px;
-  overflow-y: auto;
   width: 100%;
   border-radius: 3px;
   box-shadow: 0 0 0 1px black;
+  overflow-y: auto;
   background: white;
   z-index: 5;
 }

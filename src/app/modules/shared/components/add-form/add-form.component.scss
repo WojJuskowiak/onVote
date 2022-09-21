@@ -1,3 +1,5 @@
+@use '../../../../../assets/styles';
+
 .onv-add-form {
   position: absolute;
   top: 0;
@@ -8,7 +10,7 @@
   align-items: center;
   gap: 16px;
   width: 100%;
-  min-width: 400px;
+  min-width: styles.$min-width;
   height: 100%;
   min-height: 198px;
   padding: 32px;
