@@ -54,7 +54,8 @@ export class VoteComponent extends AbstractComponentWithData {
   }
 
   get filteredVoters(): Voter[] {
-    return this.voters.filter(voter => !voter.hasVoted);
+    const votersWhoVotedIds = this.votes.map(vote => vote.voterId);
+    return this.voters.filter(voter => !votersWhoVotedIds.includes(voter.id));
   }
 
   get isVotersListEmpty(): boolean {

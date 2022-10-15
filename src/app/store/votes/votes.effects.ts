@@ -24,7 +24,6 @@ export class VotesEffects {
   vote$ = createEffect(() => this.actions$.pipe(
     ofType(VotesAction.voteAction),
     switchMap(({vote}) => this.votesService.addVote(vote).pipe(map(() => vote))),
-    switchMap(vote => this.votersService.vote(vote.voterId).pipe(map(() => vote))),
     map(vote => VotesAction.voteSuccessAction({vote})),
     catchError(error => {
       console.error(error.message);

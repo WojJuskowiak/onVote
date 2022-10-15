@@ -1,5 +1,5 @@
 <div class="onv-voters-table__container">
-  <ng-container [ngSwitch]="votersInProgress">
+  <ng-container [ngSwitch]="votersInProgress || votesInProgress">
     <ng-container *ngSwitchCase="true">
       <ng-container *ngTemplateOutlet="loading"></ng-container>
     </ng-container>
@@ -19,7 +19,7 @@
     <div class="onv-table__rows-container">
       <div *ngFor="let voter of voters" class="onv-table__row">
         <div class="onv-table__cell">{{voter.name}}</div>
-        <ng-container [ngSwitch]="voter.hasVoted">
+        <ng-container [ngSwitch]="hasVoted(voter.id)">
           <div class="onv-table__cell onv-voters-table__checkmark" *ngSwitchCase="true"> ✓</div>
           <div class="onv-table__cell onv-voters-table__x" *ngSwitchDefault> X</div>
         </ng-container>
